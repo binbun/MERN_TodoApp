@@ -14,7 +14,7 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Route path="/" component={Landing} exact />
-      <Route path="/admin" component={Admin} exact />
+      <Route path="/admin" component={Admin} exact /> 
       <Route path="/profile" component={Profile} exact />
       <Route path="/dashboard" component={RequireAuth(Dashboard)} />
     </BrowserRouter>

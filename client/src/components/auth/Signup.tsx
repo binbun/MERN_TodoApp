@@ -39,6 +39,7 @@ const Signup = ({ renderLogin }: SignupProps) => {
     return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(text);
   }
 
+  // Check a password between 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter.
   const validatePassword = (text: string) => {
     return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(text);
   }
@@ -49,7 +50,7 @@ const Signup = ({ renderLogin }: SignupProps) => {
   }, [password, confirmPassword])
 
   return (
-    <div style={{ height: '400px' }}>
+    <form style={{ height: '400px' }}>
       <h1 className="text-center text-green-400 font-bold">signup</h1>
       <div className="mb-4">
         <label>username</label>
@@ -61,15 +62,15 @@ const Signup = ({ renderLogin }: SignupProps) => {
       </div>
       <div className="mb-4">
         <label>password</label>
-        <input onChange={(e) => setPassword(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-md" type="password" placeholder="password" />
+        <input onChange={(e) => setPassword(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-md" type="password" placeholder="password" autoComplete="on"/>
       </div>
       <div className="mb-4">
         <label>confirm password</label>
-        <input onChange={(e) => setConfirmPassword(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-md" type="password" placeholder="password" />
+        <input onChange={(e) => setConfirmPassword(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-md" type="password" placeholder="password" autoComplete="on"/>
       </div>
       <div className="mb-4">
         <label>admin code</label>
-        <input onChange={(e) => setAdminCode(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-md" type="password" placeholder="password" />
+        <input onChange={(e) => setAdminCode(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-md" type="password" placeholder="password" autoComplete="on"/>
       </div>
       <div>
         <span className="text-green-300">{validateError}</span>
@@ -79,8 +80,7 @@ const Signup = ({ renderLogin }: SignupProps) => {
           <p>Already a member? <span className="text-green-400 cursor-pointer" onClick={renderLogin}>Login</span></p>        </div>
         <button className={`rounded-lg px-6 py-3 font-bold text-white ${disabled ? "bg-gray-400" : "bg-green-400"}`} disabled={disabled} onClick={() => onSubmit()}>Signup</button>
       </div>
-
-    </div>
+    </form>
   )
 }
 
